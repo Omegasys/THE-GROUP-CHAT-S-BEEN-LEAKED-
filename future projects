@@ -1,4 +1,6 @@
 make: "secure-isa-proposal"
+     64-bit
+     128-bit
 make: "web-engine"
 make: "EMP (encrypted mail protocol)"
 remake: "GQFusion"
