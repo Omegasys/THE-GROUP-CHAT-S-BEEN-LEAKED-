@@ -1,6 +1,6 @@
 make: "secure-isa-proposal"
 make: "web-engine"
-make: "EMP (encrypted mail protocol)"-o=======
+make: "EMP (encrypted mail protocol)"
 remake: "GQFusion"
 	glow
 	glare
