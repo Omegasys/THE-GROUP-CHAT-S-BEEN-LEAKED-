@@ -15,4 +15,3 @@ remake: "GQFusion"
 remake: "ss8"
 	TOR routing
 	make 'un'-simulated
-make: "personal data ownership vault owned and stored by the user"
