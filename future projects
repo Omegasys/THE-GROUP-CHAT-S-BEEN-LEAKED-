@@ -14,6 +14,3 @@ remake: "GQFusion"
 	distance between effect on window
 	thickness if effect on border
 	distance between effect on border
-remake: "ss8"
-	TOR routing
-	make 'un'-simulated
