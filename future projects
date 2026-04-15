@@ -2,14 +2,3 @@ make: "secure-isa-proposal"
      64-bit
      128-bit
 make: "web-engine"
-remake: "GQFusion"
-	glow
-	glare
-	glass finish
-	gloss finish
-	paper finish
-	hex number for redshift
-	thickness if effect on window
-	distance between effect on window
-	thickness if effect on border
-	distance between effect on border
