@@ -4,6 +4,8 @@ secure-isa-proposal
      128-bit
      instructions/memory/
 web-engine
+linux enclave
+escrow payment
 power aware OS scheduling
 TOR network plugin for all devices with enabled by defalt
 desktop enviorment for tiny virtual machines
