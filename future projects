@@ -2,6 +2,7 @@ make:
 secure-isa-proposal
      64-bit
      128-bit
+     instructions/memory/
 web-engine
 power aware OS scheduling
 TOR network plugin for all devices with enabled by defalt
