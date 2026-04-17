@@ -1,8 +1,4 @@
 make:
-secure-isa-proposal
-     64-bit
-     128-bit
-     instructions/memory/
 web-engine
 linux enclave
 escrow payment
