@@ -16,4 +16,6 @@ change:
 ipv8 
      SSL and web-socket within ipv8 
      Can spoof and communicate with IPv6 and IPv4 
-PTFS add: virtual file system
+PTFS
+     virtual file system
+     file, drive, vdrive defrag
