@@ -1,6 +1,5 @@
 make:
 web-engine
-linux enclave
 escrow payment
 power aware OS scheduling
 TOR network plugin for all devices with enabled by defalt
@@ -9,13 +8,3 @@ desktop environment to rule them all for the year of the linux desktop
 bash+zsh+fishy + community wants and extentions + 30 addons
 basic linux anti cheet
 app store that matt from the linux cast would like
-
-
-
-change:
-ipv8 
-     SSL and web-socket within ipv8 
-     Can spoof and communicate with IPv6 and IPv4 
-PTFS
-     virtual file system
-     file, drive, vdrive defrag
