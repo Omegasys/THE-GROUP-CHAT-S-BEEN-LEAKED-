@@ -1,11 +1,6 @@
 make:
 web-engine
 escrow payment
-power aware OS scheduling
-    Inefficient resource scheduling
-    AI-assisted scheduler for CPU/GPU/RAM/battery
-    Battery inefficiency on laptops
-    Adaptive power kernel layer.
 TOR network plugin for all devices with enabled by defalt
 desktop environment to rule them all for the year of the linux desktop
      everything is customizable:
