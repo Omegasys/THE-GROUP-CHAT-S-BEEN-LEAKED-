@@ -2,3 +2,4 @@ make:
 web-engine
 GPU underutilization outside graphics
     → Universal GPU compute abstraction.
+combine gcode with other robotic codes to make a modular unified code
