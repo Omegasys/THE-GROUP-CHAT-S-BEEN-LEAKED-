@@ -1,7 +1,6 @@
 make:
 web-engine
 escrow payment
-TOR network plugin for all devices with enabled by defalt
 basic linux anti cheet
 GPU underutilization outside graphics
     → Universal GPU compute abstraction.
