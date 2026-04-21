@@ -6,3 +6,101 @@ GPU underutilization outside graphics
     → Universal GPU compute abstraction.
 combine gcode with other robotic codes to make a modular unified code
 baseline android code so that it is not owned by google
+
+security tools + Donwick currency + secrets within coins
+axiom-coin/
+├── Cargo.toml
+├── README.md
+├── LICENSE
+├── .gitignore
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── docs/
+│   ├── architecture.md
+│   ├── threat_model.md
+│   ├── protocol_spec.md
+│   └── hardware_design.md
+│
+├── crates/
+│   ├── core/
+│   │   ├── lib.rs
+│   │   └── config.rs
+│   │
+│   ├── crypto/
+│   │   ├── lib.rs
+│   │   ├── aes.rs
+│   │   ├── hashing.rs
+│   │   ├── keygen.rs
+│   │   └── signatures.rs
+│   │
+│   ├── ratchet/
+│   │   ├── lib.rs
+│   │   ├── session.rs
+│   │   ├── state.rs
+│   │   └── key_schedule.rs
+│   │
+│   ├── identity/
+│   │   ├── lib.rs
+│   │   ├── keypair.rs
+│   │   ├── wallet.rs
+│   │   └── address.rs
+│   │
+│   ├── protocol/
+│   │   ├── lib.rs
+│   │   ├── message.rs
+│   │   ├── encoding.rs
+│   │   └── handshake.rs
+│   │
+│   ├── p2p/
+│   │   ├── lib.rs
+│   │   ├── node.rs
+│   │   ├── peer.rs
+│   │   ├── routing.rs
+│   │   └── gossip.rs
+│   │
+│   ├── obfuscation/
+│   │   ├── lib.rs
+│   │   ├── traffic_shaping.rs
+│   │   ├── packet_morph.rs
+│   │   ├── steganography.rs
+│   │   ├── dummy_traffic.rs
+│   │   └── mimic/
+│   │       ├── http.rs
+│   │       ├── dns.rs
+│   │       └── websocket.rs
+│   │
+│   ├── ledger/
+│   │   ├── lib.rs
+│   │   ├── transaction.rs
+│   │   ├── block.rs
+│   │   ├── state.rs
+│   │   └── validation.rs
+│   │
+│   ├── hardware/
+│   │   ├── lib.rs
+│   │   ├── hsm.rs
+│   │   ├── secure_element.rs
+│   │   └── signing.rs
+│   │
+│   └── cli/
+│       ├── main.rs
+│       └── commands/
+│           ├── send.rs
+│           ├── receive.rs
+│           ├── wallet.rs
+│           └── node.rs
+│
+├── examples/
+│   ├── simple_transfer.rs
+│   └── p2p_node.rs
+│
+├── tests/
+│   ├── crypto_tests.rs
+│   ├── protocol_tests.rs
+│   └── integration_tests.rs
+│
+└── scripts/
+    ├── build.sh
+    └── run_node.sh
