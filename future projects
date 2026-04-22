@@ -104,3 +104,18 @@ axiom-coin/
 └── scripts/
     ├── build.sh
     └── run_node.sh
+
+chamge:#
+risc-v add:
+secure move
+hardware
+acceleration
+sleep/hibernation/power off 
+pcie pass through 
+
+ptfs:
+config/
+
+
+
+-
