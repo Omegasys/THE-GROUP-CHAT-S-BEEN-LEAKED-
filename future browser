@@ -296,3 +296,7 @@ This document serves as a planning and feature reference list for future discuss
 - Web compatibility without identity leakage
 - Resistant to future tracking methods
 - Minimal persistent identifiers
+
+also add:
+assesses TOR, I2P
+lets the yser set what the OS_spoof is but the default is windows 
