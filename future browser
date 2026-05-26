@@ -1,0 +1,298 @@
+# Advanced Browser Privacy Benchmark Feature List
+
+## Project Goal
+
+The user is interested in designing a web browser intended to theoretically exceed the privacy, anti-fingerprinting, isolation, and anonymity protections of Tor Browser while remaining usable for modern web applications.
+
+This document serves as a planning and feature reference list for future discussion and development.
+
+---
+
+# Existing PrivacyTests.org Style Categories
+
+## State Partitioning Tests
+- Cookies
+- CacheStorage
+- IndexedDB
+- LocalStorage
+- SessionStorage
+- Service Workers
+- BroadcastChannel
+- SharedWorker
+- Blob URLs
+- CSS cache
+- Favicon cache
+- HSTS
+- HTTP cache
+- Alt-Svc
+- TLS session IDs
+- OCSP cache
+
+## Navigation / Tracking Leak Tests
+- Referer leakage
+- Link decoration tracking
+- Query parameter tracking
+- Bounce tracking protections
+- Redirect tracking
+- Window.name persistence
+- ETag tracking
+
+## Fingerprinting Tests
+- Canvas fingerprinting
+- WebGL fingerprinting
+- AudioContext fingerprinting
+- Font enumeration
+- Device memory
+- Hardware concurrency
+- User-Agent exposure
+- Client Hints
+- Timezone
+- Language
+- Platform
+- Media devices
+- Speech synthesis voices
+- Battery API
+- Sensor APIs
+
+## Supercookie Tests
+- HSTS supercookies
+- TLS session resumption
+- DNS cache
+- Alt-Svc cache
+- HTTP auth cache
+- Network caches
+
+## Tracker Blocking Tests
+- Third-party cookies
+- Fingerprinting scripts
+- Ad trackers
+- Social trackers
+- Cryptomining scripts
+- Cross-site tracking pixels
+
+## HTTPS / Connection Privacy Tests
+- HTTPS upgrades
+- DNS leaks
+- Encrypted DNS
+- HTTP/3 isolation
+- Mixed-content protections
+
+## Private Browsing Tests
+- Session persistence
+- Cache persistence
+- Cookie clearing
+- Storage clearing
+- Cross-session tracking resistance
+
+---
+
+# New Proposed Features
+
+# Advanced Fingerprinting Resistance
+
+## Screen & Display Privacy
+- Default screen size testing
+- Screen resolution exposure
+- Screen resolution spoofing detection
+- Multi-monitor detection
+- Refresh-rate fingerprinting
+- HDR capability detection
+- Color gamut detection
+- Window decoration fingerprinting
+- Dark mode fingerprinting
+- Accessibility settings leakage
+
+## OS & Platform Spoofing
+- OS spoofing resistance
+- User-Agent normalization
+- Client Hints reduction
+- Platform spoofing
+- Virtual machine detection resistance
+
+## GPU & Rendering Privacy
+- GPU renderer spoofing
+- WebGL entropy reduction
+- WebGPU fingerprinting resistance
+- Shader precision normalization
+- Font rendering entropy reduction
+
+## Audio & Timing Fingerprinting
+- Audio latency fingerprinting
+- Audio processing entropy reduction
+- CPU timing entropy
+- WASM timing entropy
+- Timer precision reduction
+- Cache timing attack resistance
+
+## Behavioral Fingerprinting Resistance
+- Typing timing entropy
+- Mouse movement entropy
+- Scroll behavior fingerprinting
+- Input latency normalization
+
+---
+
+# Isolation & Sandboxing
+
+## Tab Isolation
+- Tab sandboxing
+- Cross-tab isolation
+- SharedArrayBuffer isolation
+- BroadcastChannel isolation
+- Renderer isolation
+- Site isolation
+- Process isolation testing
+
+## Extension Security
+- Cross-tab extension blocking
+- Extension fingerprinting resistance
+- Extension permission isolation
+- Private mode extension isolation
+- Content-script restrictions
+- Extension messaging isolation
+
+## Containerization
+- Cross-container isolation
+- Per-site storage isolation
+- Per-tab storage isolation
+- Per-origin cache partitioning
+
+## iframe & Embedded Content Isolation
+- Sandboxed iframe isolation
+- Popup inheritance restrictions
+- Permission inheritance restrictions
+- Embedded storage isolation
+
+---
+
+# Hardware & Device Privacy
+
+## Device Enumeration Protection
+- Touchscreen capability exposure
+- Gamepad enumeration
+- Bluetooth exposure
+- Media device enumeration
+- USB device exposure
+
+## Sensor Privacy
+- Accelerometer exposure
+- Gyroscope exposure
+- Magnetometer exposure
+- Ambient light sensor exposure
+- Motion sensor restrictions
+
+---
+
+# Network & Connection Privacy
+
+## IP & Transport Privacy
+- Local IP leakage protection
+- WebRTC leak protection
+- IPv6 leak protection
+- Proxy/VPN leak resistance
+- STUN leak resistance
+
+## DNS & Connection Isolation
+- DNS cache partitioning
+- Per-site DNS isolation
+- HTTP/3 connection reuse isolation
+- QUIC connection isolation
+
+## TLS Fingerprinting Resistance
+- TLS fingerprint randomization
+- JA3 resistance
+- Cipher suite normalization
+- TLS extension ordering randomization
+
+---
+
+# Anti-Tracking Features
+
+## Tracking Resistance
+- Advanced bounce tracking resistance
+- Redirect tracking resistance
+- Link decoration stripping
+- First-party set isolation
+- Idle detection restrictions
+- Clipboard privacy protections
+
+## State Resurrection Prevention
+- Supercookie prevention
+- Cache resurrection prevention
+- Cookie respawning resistance
+- Storage resurrection resistance
+
+---
+
+# Side-Channel Resistance
+
+## Spectre-Class Protections
+- Spectre mitigation testing
+- Meltdown mitigation testing
+- Shared memory restrictions
+- High-resolution timer restrictions
+
+## Cross-Origin Leakage Prevention
+- Cross-origin timing protections
+- Cache side-channel protections
+- Renderer memory isolation
+
+---
+
+# Experimental & Emerging APIs
+
+## Experimental API Privacy
+- WebGPU restrictions
+- AI model fingerprinting resistance
+- Federated credential restrictions
+- WebNN privacy testing
+- Future API sandboxing
+
+---
+
+# Suggested Benchmark Scores
+
+## Composite Metrics
+- Fingerprinting entropy score
+- Cross-session stability score
+- Privacy consistency score
+- Isolation score
+- Anti-tracking score
+- Network anonymity score
+- Side-channel resistance score
+- Extension security score
+
+---
+
+# Suggested Top-Level Benchmark Structure
+
+1. State Partitioning
+2. Tracking Protection
+3. Fingerprinting Resistance
+4. Hardware Privacy
+5. Network Privacy
+6. Isolation & Sandboxing
+7. Side-Channel Resistance
+8. Extension Security
+9. Behavioral Privacy
+10. Private Browsing
+11. Anti-Fingerprinting Stability
+12. Experimental APIs
+
+---
+
+# Long-Term Browser Design Goals
+
+## Potential Browser Objectives
+- Stronger anti-fingerprinting than Tor Browser
+- Better usability than Tor Browser
+- Strong isolation between tabs and sites
+- Minimal entropy exposure
+- Aggressive state partitioning
+- Built-in anonymity routing support
+- Hardened extension model
+- Timing attack mitigation
+- Modern API sandboxing
+- Web compatibility without identity leakage
+- Resistant to future tracking methods
+- Minimal persistent identifiers
