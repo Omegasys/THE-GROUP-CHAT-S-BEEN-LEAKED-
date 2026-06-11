@@ -3,7 +3,6 @@ web-engine
 GPU underutilization outside graphics
     → Universal GPU compute abstraction.
 combine gcode with other robotic codes to make a modular unified code
-baseline android code so that it is not owned by google
 make 3 new distros that are on thr same level as fedora, arch and debian that can act as a dependent for other distros
    and that is is based directly off of the kernel
 
