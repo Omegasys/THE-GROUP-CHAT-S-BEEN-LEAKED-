@@ -298,5 +298,10 @@ This document serves as a planning and feature reference list for future discuss
 - Minimal persistent identifiers
 
 also add:
+vpn feature
+sandboxed tabs
+tab groups 
+collapseable tabs
+web engine selection 
 assesses TOR, I2P
 lets the yser set what the OS_spoof is but the default is windows 
