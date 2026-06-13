@@ -1,297 +1,311 @@
-========================================================================
-BROWSER OS ARCHITECTURE SPEC (v3 — PRODUCTION GRADE)
-========================================================================
-SYSTEM OVERVIEW
+====================================================================
+BROWSER OS ARCHITECTURE SPEC v3.2 (MASTER SYSTEM DESIGN)
+====================================================================
 
-This Browser OS is a multi-engine, microVM-based secure browsing platform designed around:
+OVERVIEW
+--------------------------------------------------------------------
+This system is a Browser Operating System built on:
+- Per-tab microVM isolation
+- Multi-engine rendering support
+- Full network stack virtualization
+- Transport/protocol governance
+- Strong fingerprinting resistance
+- Ephemeral-by-default execution
+- Correlation and side-channel resistance
 
-Strong isolation (tab/workspace/VM separation)
-Controlled virtualization (microVM + container hybrid)
-Anti-fingerprinting + obfuscation (defensive privacy layer)
-Network anonymity routing (Tor/I2P/Nym compatible)
-Ephemeral-by-default execution model
-Correlation resistance + side-channel mitigation
-========================================================================
-1. CORE SYSTEM HIERARCHY
-========================================================================
+The system treats each tab as an isolated compute unit.
+
+====================================================================
+1. SYSTEM HIERARCHY
+====================================================================
+
 Browser OS
- ├── Workspaces (User security domains)
- │    ├── Tabs (Isolated execution units)
+ ├── Workspaces (Security Domains)
+ │    ├── Tabs (Isolated Execution Units)
  │    │    ├── MicroVM / Container Sandbox
  │    │    ├── Rendering Engine Instance
- │    │    ├── Network Identity Stack
+ │    │    ├── Network Stack Instance
  │    │    ├── Storage Overlay
- │    │    └── Security Profile
-========================================================================
-2. EXECUTION & VIRTUALIZATION LAYER
-========================================================================
-2.1 Core Virtualization Model
+ │    │    ├── Transport Layer Policy
+ │    │    └── Identity Profile
 
-[ ] MicroVM-per-Tab Execution (Firecracker / KVM)
-[ ] Container fallback mode (lightweight environments)
-[ ] Per-Workspace Virtual Machines
-[ ] Disposable Session Environments
-[ ] Snapshot + Instant Rollback Engine
-[ ] Auto-Destruction Lifecycle Control
+====================================================================
+2. VIRTUALIZATION LAYER
+====================================================================
 
-2.2 Supported Virtualization Backends
+[ ] Per-tab MicroVM execution (Firecracker/KVM)
+[ ] Per-workspace VM isolation
+[ ] Container fallback mode
+[ ] Snapshot + rollback system
+[ ] Auto-destroy session environments
+[ ] Nested virtualization support
 
-[ ] KVM (primary)
-[ ] Firecracker (microVM isolation layer)
-[ ] QEMU (compatibility + emulation)
-[ ] Cloud Hypervisor (optional backend)
+Hypervisors:
+[ ] KVM
+[ ] Firecracker
+[ ] QEMU
+[ ] Cloud Hypervisor
 
-2.3 Security Domains (Qubes-inspired model)
-
-[ ] Trusted Domain
-[ ] Personal Domain
-[ ] Work Domain
-[ ] Untrusted Domain
-[ ] Anonymous Domain
-[ ] High-Risk Domain
-
-========================================================================
+====================================================================
 3. MULTI-ENGINE RENDERING LAYER
-========================================================================
-3.1 Rendering Engines
+====================================================================
 
-[ ] Blink (Chromium compatibility)
-[ ] Gecko (Firefox-style hardened mode)
-[ ] WebKit (Safari compatibility mode)
-[ ] Servo (experimental parallel renderer)
-[ ] Hardened Minimal Renderer (low attack surface mode)
+Supported engines:
+[ ] Blink
+[ ] Gecko
+[ ] WebKit
+[ ] Servo
+[ ] Hardened Minimal Renderer
 
-3.2 Engine Isolation Model
-
-Each engine instance runs with:
-
-[ ] Dedicated MicroVM
-[ ] Isolated GPU context
-[ ] Separate JS runtime
-[ ] Independent layout + font stack
+Engine isolation:
+[ ] Per-engine MicroVM isolation
+[ ] Per-engine GPU context separation
+[ ] Per-engine JS runtime isolation
 [ ] No shared renderer memory
 
-3.3 Engine Assignment Policy
+Engine policies:
+[ ] Per-tab engine selection
+[ ] Per-workspace default engine
+[ ] Engine fallback chain
+[ ] Engine randomization mode
 
-[ ] Per-Tab engine selection
-[ ] Per-Workspace default engine
-[ ] Trust-based engine selection
-[ ] Compatibility fallback chain
-[ ] Optional engine randomization mode
+====================================================================
+4. NETWORK ISOLATION LAYER
+====================================================================
 
-========================================================================
-4. NETWORK ISOLATION & ANONYMITY LAYER
-========================================================================
-4.1 Per-Tab Network Stack
-
-[ ] Independent TCP/IP stack per tab
-[ ] Per-tab routing tables
+[ ] Per-tab network stack
+[ ] Per-tab routing table
 [ ] Per-tab DNS resolver
-[ ] Isolated VPN instance per workspace
+[ ] Per-workspace VPN instance
 
-4.2 Anonymity Routing
+Anonymity networks:
+[ ] Tor routing
+[ ] I2P routing
+[ ] Nym mixnet routing
+[ ] Hybrid onion routing
 
-[ ] Tor integration (onion routing)
-[ ] I2P support (hidden services)
-[ ] Nym mixnet support (metadata resistance)
-[ ] Multi-hop hybrid routing (Tor + I2P + mixnet optional fusion)
+====================================================================
+5. PROTOCOL GOVERNANCE LAYER
+====================================================================
 
-4.3 Traffic Obfuscation (Production Set)
+IP stack control:
+[ ] IPv4 enable/disable per workspace
+[ ] IPv6 enable/disable per workspace
+[ ] Dual-stack mode
+[ ] IPv6-only mode
+[ ] IPv4-only mode
 
-[ ] TLS fingerprint normalization (JA3/JA4 control)
-[ ] HTTP header normalization + reordering
-[ ] Packet padding + timing jitter
-[ ] DNS-over-HTTPS / DNS-over-TLS support
-[ ] Encrypted Client Hello (ECH) support
+HTTP/HTTPS control:
+[ ] HTTP/1.1 enable/disable
+[ ] HTTP/2 enable/disable
+[ ] HTTP/3 (QUIC) enable/disable
+[ ] HTTPS-only enforcement
+[ ] Mixed-content blocking
 
-========================================================================
-5. STORAGE & STATE ISOLATION LAYER
-========================================================================
-5.1 Ephemeral Storage Model
+Web protocols:
+[ ] WebSocket enable/disable
+[ ] WebRTC enable/disable
+[ ] WebTransport enable/disable
 
+DNS:
+[ ] DoH enable/disable
+[ ] DoT enable/disable
+[ ] Plain DNS blocking
+
+====================================================================
+6. TRANSPORT LAYER CONTROL (TCP / UDP / QUIC)
+====================================================================
+
+Transport control:
+[ ] TCP enable/disable per workspace
+[ ] UDP enable/disable per workspace
+[ ] QUIC enable/disable per workspace
+[ ] SCTP optional support
+
+Transport modes:
+[ ] TCP-only mode
+[ ] UDP-only mode
+[ ] Dual-stack mode
+[ ] Locked transport mode
+[ ] Randomized transport mode
+
+TCP controls:
+[ ] Connection timing normalization
+[ ] Keep-alive policy control
+[ ] Packet timing jitter injection
+
+UDP controls:
+[ ] Rate limiting per tab
+[ ] Packet padding system
+[ ] Datagram shaping engine
+
+QUIC controls:
+[ ] Stream multiplex control
+[ ] Connection migration control
+[ ] QUIC fingerprint masking
+
+====================================================================
+7. STORAGE ISOLATION LAYER
+====================================================================
+
+[ ] Per-tab filesystem overlay
 [ ] Memory-only session mode
-[ ] Ephemeral encrypted storage per tab
-[ ] Auto-wipe on close (default behavior)
-[ ] Write-once temporary storage mode
+[ ] Ephemeral storage by default
+[ ] Secure delete engine
+[ ] Cache isolation per workspace
+[ ] Cookie jar partitioning
+[ ] IndexedDB isolation
 
-5.2 Browser State Isolation
-
-[ ] Partitioned cookie jars per workspace
-[ ] Isolated LocalStorage per origin
-[ ] IndexedDB namespace fragmentation
-[ ] Cache isolation + anti-leak mode
-
-5.3 Artifact Protection
-
-[ ] Secure deletion engine
-[ ] Storage artifact sanitization
-[ ] No persistent cross-tab storage leakage
-
-========================================================================
-6. MEMORY, PROCESS & RUNTIME SECURITY
-========================================================================
-6.1 Memory Isolation
+====================================================================
+8. MEMORY & RUNTIME ISOLATION
+====================================================================
 
 [ ] Per-tab memory space isolation
-[ ] RAM wipe on termination
-[ ] Memory encryption support (where available)
-[ ] Shared memory restrictions
-
-6.2 Runtime Hardening
-
+[ ] RAM wipe on tab close
+[ ] Memory encryption support
 [ ] seccomp sandboxing
-[ ] AppArmor / SELinux integration
-[ ] Landlock enforcement layer
-[ ] Kernel exploit detection heuristics
-[ ] VM escape monitoring
+[ ] AppArmor / SELinux enforcement
+[ ] Landlock isolation layer
 
-6.3 JavaScript / WASM Control Layer
+====================================================================
+9. GPU & RENDER PIPELINE ISOLATION
+====================================================================
 
-[ ] JS execution policy modes:
-- full JS
-- restricted JS
-- no JS mode
-
-[ ] JIT control (enable/disable per security level)
-[ ] WASM sandbox isolation micro-environment
-[ ] DOM API surface minimization per trust domain
-
-========================================================================
-7. GPU & RENDER PIPELINE ISOLATION
-========================================================================
-
-[ ] WebGPU sandboxing per tab
-[ ] WebGL isolation layer
-[ ] GPU context separation per engine instance
+[ ] WebGPU sandboxing
+[ ] WebGL isolation per engine
+[ ] GPU context separation
 [ ] Shader execution sandboxing
-[ ] GPU fingerprint normalization layer
+[ ] GPU fingerprint normalization
 
-========================================================================
-8. FINGERPRINTING & OBFUSCATION LAYER
-========================================================================
-8.1 Browser Fingerprint Control
+====================================================================
+10. FINGERPRINTING & OBFUSCATION LAYER
+====================================================================
 
+Browser fingerprint controls:
 [ ] Canvas noise injection
 [ ] WebGL parameter normalization
 [ ] AudioContext obfuscation
 [ ] Font rendering normalization
-[ ] Font enumeration blocking
-
-[ ] User-agent entropy management
+[ ] User-agent entropy control
 [ ] Screen resolution normalization
-[ ] Timezone / locale per workspace
+[ ] Locale/timezone masking
 [ ] Device memory masking
 [ ] Hardware concurrency spoofing
-[ ] Media device enumeration blocking
+[ ] Media device blocking
 
-8.2 Network Identity Obfuscation
-
-[ ] IP rotation per tab/workspace
-[ ] MAC address randomization
+Network identity:
+[ ] IP rotation per tab
+[ ] MAC randomization
 [ ] IPv6 temporary address cycling
-[ ] Exit node diversity selection
+[ ] Exit node diversity control
 
-8.3 Behavioral Protection
-
-[ ] Input timing jitter injection
-[ ] Mouse movement entropy injection
-[ ] Scroll pattern normalization
+Behavioral obfuscation:
+[ ] Input timing jitter
+[ ] Mouse movement noise
+[ ] Scroll pattern randomization
 [ ] Cross-tab behavior decorrelation
 
-8.4 Side-Channel Protection (Production Subset)
+====================================================================
+11. SIDE-CHANNEL DEFENSE LAYER
+====================================================================
 
 [ ] High-resolution timer throttling
 [ ] Performance API normalization
-[ ] Frame timing jitter (RAF protection)
-[ ] CPU scheduling noise injection (limited)
+[ ] Frame timing jitter injection
+[ ] CPU cache timing noise injection
+[ ] Scheduler noise injection (limited)
+[ ] Side-channel reduction policies
 
-8.5 VM Fingerprint Hardening
+====================================================================
+12. CORRELATION RESISTANCE LAYER
+====================================================================
 
-[ ] CPUID masking
-[ ] VM device signature normalization
-[ ] BIOS/UEFI identity abstraction
-[ ] Virtual GPU identity masking
-[ ] MAC pool randomization
-
-========================================================================
-9. CORRELATION & TRACKING RESISTANCE
-========================================================================
-
-[ ] Identity graph fragmentation system
-[ ] Cross-tab correlation prevention engine
-[ ] Session desynchronization layer
+[ ] Identity graph fragmentation
+[ ] Cross-tab correlation prevention
+[ ] Session desynchronization
 [ ] Cross-origin isolation enforcement
-[ ] Anti-linkability enforcement system
+[ ] Anti-linkability system
 
-========================================================================
-10. SECURITY MONITORING & SELF-DEFENSE
-========================================================================
+====================================================================
+13. SECURITY MONITORING LAYER
+====================================================================
 
 [ ] Runtime integrity verification
+[ ] VM escape detection
 [ ] Renderer compromise detection
-[ ] MicroVM escape detection
 [ ] Behavioral anomaly detection
-[ ] Automatic tab quarantine system
-[ ] Self-healing session recovery
+[ ] Automatic tab quarantine
+[ ] Self-healing recovery system
 
-========================================================================
-11. POLICY & CONTROL SYSTEM
-========================================================================
-Operating Modes
+====================================================================
+14. UPDATE & TRUST CHAIN SYSTEM
+====================================================================
 
+[ ] Signed system updates
+[ ] Engine signature verification
+[ ] Secure boot chain
+[ ] Attestation-based VM launch
+[ ] Plugin trust validation system
+
+====================================================================
+15. RENDER ENGINE PLUGIN SYSTEM
+====================================================================
+
+Engine lifecycle:
+[ ] Installed
+[ ] Staged
+[ ] Testing (sandbox VM)
+[ ] Limited
+[ ] Approved
+[ ] Trusted Core
+
+Engine sandbox:
+[ ] No network access default
+[ ] Instrumented execution tracing
+[ ] Synthetic web test corpus
+[ ] GPU + JS isolated environment
+
+====================================================================
+16. POLICY & CONTROL SYSTEM
+====================================================================
+
+Operating modes:
 [ ] Maximum Privacy Mode
-→ full isolation + full obfuscation + strict controls
-
 [ ] Balanced Mode
-→ usability + privacy hybrid
-
 [ ] Performance Mode
-→ reduced VM overhead, fewer obfuscation layers
-
 [ ] Compatibility Mode
-→ minimal interference, maximum site support
 
-Adaptive Control
-
-[ ] Context-aware security scaling engine
-[ ] Entropy budget system (controls randomness vs usability)
+Adaptive controls:
+[ ] Context-aware security scaling
+[ ] Entropy budget management
 [ ] Per-workspace security profiles
-[ ] Transparency + audit logging mode
+[ ] Transparency audit mode
 
-========================================================================
-12. ARCHITECTURAL SUMMARY
-========================================================================
+====================================================================
+17. FAILURE & RECOVERY SYSTEM
+====================================================================
 
-This Browser OS v3 is composed of six integrated security planes:
+[ ] VM crash recovery
+[ ] Renderer fallback system
+[ ] Safe degraded mode
+[ ] Workspace rollback system
+[ ] Tab isolation containment on failure
 
-1. ISOLATION PLANE
+====================================================================
+FINAL SUMMARY
+====================================================================
 
-MicroVMs, containers, per-tab execution boundaries
+This Browser OS is composed of:
 
-2. VIRTUALIZATION PLANE
+1. Virtualized execution (per-tab microVMs)
+2. Multi-engine rendering system
+3. Full network + transport control (TCP/UDP/QUIC/IP)
+4. Strong fingerprinting resistance layer
+5. Ephemeral storage and memory isolation
+6. Side-channel mitigation system
+7. Correlation resistance engine
+8. Secure update + trust chain
+9. Engine plugin sandbox system
+10. Failure recovery + safety layer
 
-Multi-engine rendering + hardware abstraction
-
-3. NETWORK ANONYMITY PLANE
-
-Tor/I2P/Nym hybrid routing + per-tab network stacks
-
-4. OBFUSCATION PLANE
-
-Fingerprint masking + behavioral noise + identity mutation
-
-5. CORRELATION RESISTANCE PLANE
-
-Prevents cross-session inference and tracking graphs
-
-6. RUNTIME DEFENSE PLANE
-
-Memory protection, sandboxing, VM escape detection
-
-FINAL NOTE (IMPORTANT REALITY CHECK)
-
-This is now a production-grade architecture spec, but in real implementation:
-
-~60–70% is fully implementable today (Linux + Rust + KVM + Chromium/Servo components)
-~20–30% is advanced but feasible with engineering effort (multi-engine isolation, full per-tab VM)
-~10% is research-grade (advanced behavioral deception + full side-channel elimination)
+The system treats every tab as a fully isolated, policy-controlled virtual machine with independent rendering, networking, storage, and identity.
