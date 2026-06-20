@@ -1,0 +1,458 @@
+ULTIMATE MODULAR FILE EXPLORER SPECIFICATION
+Version: Draft 1.0
+
+OVERVIEW
+
+A modular file explorer that combines:
+
+* File Manager
+* Terminal Hub
+* IDE Features
+* Project Manager
+* System Administration Console
+* Security Console
+* Plugin Platform
+
+The application acts as the central interface for the operating system while remaining extensible through plugins.
+
+==================================================
+CORE FILE MANAGEMENT
+
+* Single-pane browsing
+* Dual-pane browsing
+* Multi-pane browsing
+* Tabbed browsing
+* Split views
+* Tree navigation
+* Breadcrumb navigation
+* Favorites
+* Bookmarks
+* Session restoration
+* Workspace restoration
+* Drag-and-drop
+* Copy
+* Move
+* Rename
+* Delete
+* Secure delete
+* Undo
+* Redo
+* Batch operations
+* File synchronization
+* Folder synchronization
+
+==================================================
+FOLDER ORGANIZATION
+
+* Create new folder from selected files
+* Create new folder from selected folders
+* Create new folder from mixed selections
+* Prompt user for folder name
+* Batch rename wizard
+* Naming templates
+* Regex renaming
+* Auto numbering
+* Search-and-replace renaming
+* Smart file organization rules
+
+==================================================
+SEARCH
+
+* Instant search
+* Indexed search
+* Content search
+* Regex search
+* Metadata search
+* Duplicate finder
+* Similar file finder
+* Saved searches
+* Advanced filters
+
+==================================================
+ARCHIVE MANAGEMENT
+
+* ZIP extraction
+* ZIP creation
+* ZIP preview
+* 7z extraction
+* 7z creation
+* TAR support
+* GZIP support
+* BZIP2 support
+* XZ support
+* RAR support
+* Archive browsing as folders
+* Search inside archives
+* Archive integrity verification
+* Encrypted archive support
+
+==================================================
+VIEWERS AND EDITORS
+
+* Text viewer
+* Text editor
+* Markdown editor
+* JSON editor
+* YAML editor
+* XML editor
+* TOML editor
+* Log viewer
+* Image viewer
+* Video viewer
+* Audio player
+* PDF viewer
+* Database viewer
+
+HEX FEATURES
+
+* Hex viewer
+* Hex editor
+* Offset navigation
+* Binary search
+* Binary replace
+* Structure templates
+* Hex compare
+
+BINARY FEATURES
+
+* Binary viewer
+* Binary editor
+* Bit-level editing
+* Byte-level editing
+* Executable inspection
+* Firmware inspection
+* Raw disk inspection
+
+==================================================
+TERMINAL SYSTEM
+
+Embedded terminal panel
+
+Supported shell types:
+
+* Bash
+* Zsh
+* Fish
+* Nushell
+* Xonsh
+* Additional plugin shells
+
+Terminal modes:
+
+* CLI
+* TUI
+* GUI launcher integration
+
+Terminal synchronization modes:
+
+* Linked
+* Independent
+* One-Way Sync
+* Two-Way Sync
+* Project Root Lock
+
+Terminal selection dropdown:
+
+* Built-in terminal
+* External terminal integrations
+* User-defined terminals
+
+Multiple terminal tabs
+
+Per-terminal profiles
+
+==================================================
+EXPLORER-SPECIFIC SHELL SYSTEM
+
+Explorer-specific shell configuration
+
+Separate from:
+
+* ~/.bashrc
+* ~/.zshrc
+* ~/.config/fish
+
+Explorer shell files:
+
+* explorer bashrc
+* explorer zshrc
+* explorer fish config
+* explorer nushell config
+
+Explorer-only aliases
+Explorer-only functions
+Explorer-only environment variables
+
+Project-specific shell files:
+
+* .explorerrc
+
+Workspace startup scripts
+
+==================================================
+APPLICATION EXECUTION MODEL
+
+Applications may expose:
+
+* CLI interface
+* TUI interface
+* GUI interface
+* Web interface
+* API interface
+
+Launch modes:
+
+* Run GUI
+* Run TUI
+* Run CLI
+* Run Headless
+* Run as Service
+* Run in Sandbox
+
+==================================================
+PROGRAM MANAGEMENT
+
+Programs folder
+
+Supports:
+
+* Compiled binaries
+* Source projects
+* Scripts
+* Plugins
+
+Project detection:
+
+* Rust
+* C
+* C++
+* Python
+* Go
+* Zig
+* Java
+* JavaScript
+* TypeScript
+* Additional plugin languages
+
+Build system detection:
+
+* Cargo
+* Make
+* CMake
+* Nix
+* npm
+* pnpm
+* Go build
+* Additional plugin build systems
+
+==================================================
+PLUGIN ARCHITECTURE
+
+Plugin categories:
+
+* Terminal plugins
+* Editor plugins
+* Archive plugins
+* Security plugins
+* Cloud plugins
+* Virtualization plugins
+* Language plugins
+* Build plugins
+* Device plugins
+* AI plugins
+
+Supported plugin formats:
+
+* .so
+* .dll
+* .dylib
+* .py
+* .lua
+* .js
+* .wasm
+
+Plugin manager
+Plugin marketplace
+Plugin updates
+Plugin sandboxing
+
+==================================================
+PROJECT MANAGEMENT
+
+Project explorer
+
+Project metadata panel
+
+Dependency viewers
+
+Git integration:
+
+* Commit history
+* Branch management
+* Diff viewer
+* Merge tools
+
+Workspace system
+
+Workspace restoration
+
+Build matrix support
+
+==================================================
+SECURITY FEATURES
+
+Permission inspector
+
+View:
+
+* Ownership
+* Permissions
+* ACLs
+* SELinux contexts
+* AppArmor profiles
+
+Hashing:
+
+* MD5
+* SHA-1
+* SHA-256
+* SHA-512
+
+GPG support
+
+Digital signature verification
+
+Secure delete
+
+Forensic mode
+
+Read-only root mode
+
+Trust levels:
+
+* Trusted
+* Semi-Trusted
+* Untrusted
+* Disposable
+
+Sandbox execution
+
+Disposable environments
+
+==================================================
+PRIVILEGE MANAGEMENT
+
+Privilege levels:
+
+* Guest
+* User
+* Power User
+* Administrator
+* Root
+* Read-Only Root
+* Container Root
+* Remote Root
+
+Privilege escalation ALWAYS requires authorization.
+
+Supported authorization methods:
+
+* Password
+* Security key (FIDO2/YubiKey)
+* Biometrics
+* Smart card
+* Authentication application
+* Policy-based authorization
+
+No silent privilege escalation.
+
+No automatic root elevation.
+
+No plugin bypass of authorization system.
+
+Every elevation request must:
+
+* Display requested privilege level
+* Display requesting action
+* Require user approval
+
+==================================================
+NETWORK AND REMOTE ACCESS
+
+* SMB
+* NFS
+* FTP
+* FTPS
+* SFTP
+* SCP
+* WebDAV
+* SSH integration
+* Remote file systems
+
+==================================================
+STORAGE FEATURES
+
+* Disk usage analyzer
+* Folder size calculations
+* Snapshot browsing
+* Version history
+* ISO mounting
+* Disk image browsing
+* VM image browsing
+* Container filesystem browsing
+
+==================================================
+DEVICE EXPLORER
+
+Device tree
+
+Browse:
+
+* USB
+* PCIe
+* Network
+* Bluetooth
+* Cameras
+* Sensors
+* Serial devices
+* GPS devices
+* LiDAR devices
+* Radar devices
+
+==================================================
+SYSTEM OPERATIONS CENTER
+
+Unified dashboard
+
+Monitor:
+
+* CPU
+* RAM
+* Storage
+* Network
+* Containers
+* Virtual machines
+* Services
+* Sensors
+* Projects
+* Terminal sessions
+
+==================================================
+UNIVERSAL OBJECT MODEL
+
+Everything is browsable through the explorer:
+
+Files/
+Projects/
+Archives/
+Network/
+Cloud/
+Git/
+Containers/
+VMs/
+Processes/
+Services/
+Devices/
+Sensors/
+
+The explorer serves as the central management interface for the entire operating system.
