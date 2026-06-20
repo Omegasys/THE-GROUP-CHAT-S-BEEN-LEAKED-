@@ -1,0 +1,290 @@
+===============================
+CLI MUSIC PLAYER — FULL SPEC SHEET
+(“Next-Gen Terminal Audio System”)
+===============================
+
+1. OVERVIEW
+--------------------------------
+Name: TBA (working title: "AURORA CLI Audio System")
+Type: Terminal-based modular music player
+Architecture: Client/Server (MPD-inspired core + modern TUI clients)
+Primary Goal: High-performance, fully keyboard-driven, scriptable music system with modern audio + streaming support
+
+Core Philosophy:
+- Unix-like modularity
+- Zero-bloat design
+- Everything scriptable
+- Instant response UI (<50ms interaction feel)
+- Works locally, remotely (SSH), or headless
+
+------------------------------------------------
+
+2. CORE ARCHITECTURE
+--------------------------------
+AUDIO ENGINE LAYER:
+- Decoding via FFmpeg backend
+- Optional SoX processing pipeline
+- PipeWire / PulseAudio / ALSA output abstraction layer
+- JACK support for pro audio mode
+
+DAEMON (aurora-daemon):
+- Runs in background
+- Handles playback, queue, library, metadata cache
+- Exposes UNIX socket + optional TCP API
+- Persistent state storage (SQLite + flat cache files)
+
+CLIENTS:
+- TUI client (aurora-tui)
+- CLI controller (aurora-cli)
+- Optional lightweight web/remote client (aurora-remote)
+
+------------------------------------------------
+
+3. CORE PLAYBACK FEATURES
+--------------------------------
+- Play / Pause / Stop
+- Next / Previous track
+- Seek (forward/backward precise or jump-based)
+- Volume control (software + system mixer integration)
+- Playback speed control (0.5x – 2.0x)
+- Gapless playback
+- Crossfade (configurable 0–12 seconds)
+- Repeat modes:
+  - Off
+  - Track
+  - Album
+  - Playlist
+- Shuffle modes:
+  - Random
+  - Weighted smart shuffle (based on play history)
+
+------------------------------------------------
+
+4. LIBRARY SYSTEM
+--------------------------------
+- Folder-based scanning OR indexed database mode
+- Metadata parsing:
+  - ID3v2
+  - Vorbis comments
+  - FLAC tags
+  - AAC/MP4 metadata
+- Library views:
+  - Artist
+  - Album
+  - Genre
+  - Year
+  - Folder tree
+- Live rescan without restart
+- Watch mode (auto-detect new files)
+- Duplicate detection (hash + metadata similarity)
+- Smart playlists (rule engine):
+  - Genre filters
+  - BPM range
+  - Play count
+  - Last played
+- ReplayGain support (album + track modes)
+
+------------------------------------------------
+
+5. PLAYLIST SYSTEM
+--------------------------------
+- Persistent playlists (disk saved)
+- Temporary queue (session-based)
+- M3U / PLS / XSPF import/export
+- Drag-reorder equivalent (keyboard-driven)
+- Playlist merging / splitting
+- Dynamic playlists (auto-updating rules)
+- Queue snapshot/restore system
+
+------------------------------------------------
+
+6. SEARCH & NAVIGATION
+--------------------------------
+- Instant fuzzy search (Ctrl+F style)
+- Incremental filtering (type-to-filter UI)
+- Regex search mode (optional toggle)
+- Tag-based search queries
+- File-path search mode
+- Command palette (vim-like “:” commands)
+
+------------------------------------------------
+
+7. AUDIO FORMAT SUPPORT
+--------------------------------
+NATIVE:
+- MP3
+- FLAC
+- WAV
+- OGG/Vorbis
+- Opus
+
+EXTENDED (via FFmpeg):
+- AAC / M4A
+- ALAC
+- WMA
+- AIFF
+- AC3 / DTS (if enabled)
+
+SPECIAL:
+- Cue sheet splitting support
+- Gapless album detection
+- Streaming format support (HTTP/HTTPS)
+
+------------------------------------------------
+
+8. STREAMING & NETWORK
+--------------------------------
+- Internet radio (Icecast / Shoutcast)
+- Direct stream URL playback
+- Subsonic-compatible servers
+- Jellyfin/Navidrome integration (plugin layer)
+- Spotify playback via librespot bridge (optional module)
+- Remote MPD compatibility mode
+- HTTP live streams
+- Local network discovery (optional)
+
+------------------------------------------------
+
+9. USER INTERFACE (TUI)
+--------------------------------
+LAYOUT:
+- Left: Library tree
+- Center: Track list
+- Right: Now playing / queue
+- Bottom: command input + status bar
+
+FEATURES:
+- Vim-like keybindings (configurable)
+- Mouse support (optional toggle)
+- Theme engine (ANSI + truecolor)
+- Split panes + resizable layout
+- Minimal mode / full mode toggle
+- Album art rendering:
+  - ASCII fallback
+  - Sixel / Kitty graphics support
+- Notification popups (terminal + optional desktop)
+
+------------------------------------------------
+
+10. VISUALIZATION
+--------------------------------
+- Real-time spectrum analyzer (ASCII / block mode)
+- Waveform view (simplified terminal rendering)
+- Beat-reactive mode
+- External visualizer bridge (cava-compatible API)
+
+------------------------------------------------
+
+11. METADATA & ENRICHMENT
+--------------------------------
+- MusicBrainz auto-tagging
+- Discogs lookup integration (optional plugin)
+- Embedded album art support
+- External lyrics fetching:
+  - Local cache
+  - Online API fallback
+- BPM detection
+- Key detection (Camelot notation optional)
+- Auto normalization (ReplayGain / loudness units)
+
+------------------------------------------------
+
+12. SYSTEM INTEGRATION
+--------------------------------
+- MPRIS support (Linux desktop media keys)
+- DBus integration
+- System media key bindings
+- tmux integration mode
+- i3 / sway / waybar status hooks
+- Notifications via notify-send or equivalent
+- Discord Rich Presence (optional plugin)
+
+------------------------------------------------
+
+13. SCRIPTING & EXTENSIBILITY
+--------------------------------
+- Lua scripting API (primary)
+- Shell command hooks
+- Python plugin bridge (optional)
+- Event hooks:
+  - on_play
+  - on_pause
+  - on_track_change
+  - on_queue_end
+- Plugin system:
+  - Audio filters
+  - UI extensions
+  - Metadata providers
+- Fully config-driven (TOML or YAML)
+
+------------------------------------------------
+
+14. PERFORMANCE TARGETS
+--------------------------------
+- Startup time: < 200ms (daemon already running)
+- UI latency: < 50ms input response
+- Memory usage: < 150MB typical
+- CPU usage: near-idle when paused
+- Large library support: 100k+ tracks indexed
+
+------------------------------------------------
+
+15. STORAGE SYSTEM
+--------------------------------
+- SQLite database for metadata indexing
+- Flat cache for quick lookup
+- Optional JSON export snapshot mode
+- Persistent playback state:
+  - Last track
+  - Position
+  - Volume
+  - Queue state
+
+------------------------------------------------
+
+16. SECURITY / PRIVACY MODE
+--------------------------------
+- No telemetry by default
+- Offline-first operation
+- Optional sandboxed plugin execution
+- Local-only metadata mode (no internet lookup)
+- Encrypted config option (for portable installs)
+
+------------------------------------------------
+
+17. CONFIGURATION
+--------------------------------
+- Single config file (TOML recommended)
+- Hot-reload config support
+- Modular enable/disable system:
+  - streaming = true
+  - lyrics = false
+  - lastfm = optional
+- Keybinding remapping system
+
+------------------------------------------------
+
+18. ADVANCED FEATURES
+--------------------------------
+- Smart shuffle (avoids repetition clustering)
+- Listening history analytics (local only)
+- Mood tagging system (manual or AI-assisted optional)
+- Auto-play suggestions (rule-based, not cloud dependent)
+- Multi-device sync (optional manual export/import)
+- Remote headless server mode (music NAS style)
+
+------------------------------------------------
+
+19. DESIGN GOALS SUMMARY
+--------------------------------
+- Fully terminal-native experience
+- No GUI dependency
+- Fast, scriptable, modular
+- MPD-like architecture but modernized
+- High audio fidelity focus
+- Extreme keyboard efficiency
+- Works locally, remotely, or embedded
+
+===============================
+END OF SPEC
+===============================
