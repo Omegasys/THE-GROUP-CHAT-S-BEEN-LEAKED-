@@ -4,7 +4,7 @@ tui
 cli
 
 PS:
-linux (snap, flat pack, .deb)
+linux (snap, flat pack, .appimage, .deb, .rpm)
 windows 
 bsd 
 macOS
