@@ -15,6 +15,95 @@ A modular file explorer that combines:
 
 The application acts as the central interface for the operating system while remaining extensible through plugins.
 
+================================================== MENU BAR AND APPLICATION FRAMEWORK
+
+Both GUI and TUI modes include a persistent top menu bar modeled after traditional desktop applications.
+
+Standard menus:
+
+* File
+* Edit
+* View
+* Navigate
+* Search
+* Tools
+* Terminal
+* Project
+* Window
+* Plugins
+* Security
+* Help
+
+File menu:
+
+* New File
+* New Folder
+* Open
+* Open Recent
+* Save
+* Save As
+* Import
+* Export
+* Print
+* Close Tab
+* Close Window
+* Exit
+
+Edit menu:
+
+* Undo
+* Redo
+* Cut
+* Copy
+* Paste
+* Delete
+* Rename
+* Select All
+* Preferences
+
+View menu:
+
+* Toggle Panels
+* Toggle Sidebar
+* Toggle Terminal
+* Toggle Status Bar
+* Toggle Toolbar
+* Zoom In
+* Zoom Out
+* Reset Layout
+
+Window menu:
+
+* New Window
+* New Tab
+* Split View
+* Workspace Management
+* Session Management
+
+Help menu:
+
+* Documentation
+* Keyboard Shortcuts
+* Plugin Documentation
+* About
+
+GUI features:
+
+* Traditional menu bar
+* Optional toolbar beneath menu bar
+* Context menus
+* Status bar
+* Customizable menu entries through plugins
+
+TUI features:
+
+* Persistent top menu bar
+* Keyboard-accessible menus
+* Mouse support where available
+* Function-key shortcuts
+* Command palette integration
+* Plugin-extensible menu system
+
 ================================================== CORE FILE MANAGEMENT
 
 * Single-pane browsing
