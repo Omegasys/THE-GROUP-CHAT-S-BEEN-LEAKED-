@@ -1,0 +1,12 @@
+interface:
+gui
+tui 
+cli
+
+PS:
+linux (snap, flat pack, .deb)
+windows 
+bsd 
+macOS
+IOS
+android 
