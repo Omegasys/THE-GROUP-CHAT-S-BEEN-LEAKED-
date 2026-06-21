@@ -1,234 +1,247 @@
-ULTIMATE MODULAR FILE EXPLORER SPECIFICATION
-Version: Draft 1.0
+==================================================
+CORENAV
+Unified System Navigation Platform
+Specification v1.0 Draft
+License: GPLv3
 
-OVERVIEW
+MISSION
 
-A modular file explorer that combines:
+CoreNav is a modular system navigation platform that
+unifies:
 
-* File Manager
-* Terminal Hub
-* IDE Features
-* Project Manager
-* System Administration Console
-* Security Console
-* Plugin Platform
-
-The application acts as the central interface for the operating system while remaining extensible through plugins.
-
-================================================== MENU BAR AND APPLICATION FRAMEWORK
-
-Both GUI and TUI modes include a persistent top menu bar modeled after traditional desktop applications.
-
-Standard menus:
-
-* File
-* Edit
-* View
-* Navigate
-* Search
-* Tools
-* Terminal
-* Project
-* Window
-* Plugins
-* Security
-* Help
-
-File menu:
-
-* New File
-* New Folder
-* Open
-* Open Recent
-* Save
-* Save As
-* Import
-* Export
-* Print
-* Close Tab
-* Close Window
-* Exit
-
-Edit menu:
-
-* Undo
-* Redo
-* Cut
-* Copy
-* Paste
-* Delete
-* Rename
-* Select All
-* Preferences
-
-View menu:
-
-* Toggle Panels
-* Toggle Sidebar
-* Toggle Terminal
-* Toggle Status Bar
-* Toggle Toolbar
-* Zoom In
-* Zoom Out
-* Reset Layout
-
-Window menu:
-
-* New Window
-* New Tab
-* Split View
+* File Management
+* Project Management
+* Terminal Access
+* System Administration
+* Plugin Ecosystems
+* Security Operations
+* Device Management
 * Workspace Management
-* Session Management
 
-Help menu:
+into a single interface.
 
-* Documentation
+CoreNav is not merely a file explorer.
+
+CoreNav serves as a unified navigation layer for the
+entire operating system.
+
+==================================================
+ARCHITECTURAL PRINCIPLES
+
+1. Everything Is Navigable
+
+Files
+Directories
+Projects
+Archives
+Devices
+Services
+Processes
+Containers
+Virtual Machines
+Network Resources
+Cloud Resources
+Repositories
+
+shall be accessible through a unified navigation model.
+
+⸻
+
+2. One Backend, Multiple Interfaces
+
+All functionality shall be accessible through:
+
+* GUI
+* TUI
+* CLI
+
+No feature shall be restricted to a single interface
+unless technically impossible.
+
+All interfaces shall share:
+
+* Backend APIs
+* Permission Systems
+* Plugin Systems
+* Workspace Systems
+
+⸻
+
+3. Keyboard First
+
+Every operation shall be accessible through:
+
 * Keyboard Shortcuts
-* Plugin Documentation
-* About
+* Command Palette
+* CLI Commands
 
-GUI features:
+No operation shall require a mouse.
 
-* Traditional menu bar
-* Optional toolbar beneath menu bar
-* Context menus
-* Status bar
-* Customizable menu entries through plugins
+All shortcuts shall be user configurable.
 
-TUI features:
+⸻
 
-* Persistent top menu bar
-* Keyboard-accessible menus
-* Mouse support where available
-* Function-key shortcuts
-* Command palette integration
-* Plugin-extensible menu system
+4. Modular By Default
 
-================================================== CORE FILE MANAGEMENT
+All major subsystems shall support plugins.
 
-* Single-pane browsing
-* Dual-pane browsing
-* Multi-pane browsing
-* Tabbed browsing
-* Split views
-* Tree navigation
-* Breadcrumb navigation
-* Favorites
+Core functionality shall remain lightweight.
+
+Features may be enabled, disabled, installed, or
+removed without affecting unrelated systems.
+
+==================================================
+FILE MANAGEMENT
+
+Navigation
+
+* Single Pane
+* Dual Pane
+* Multi Pane
+* Split View
+* Tree View
+* Breadcrumb Navigation
+* Tabs
 * Bookmarks
-* Session restoration
-* Workspace restoration
-* Drag-and-drop
+* Favorites
+* Session Restoration
+* Workspace Restoration
+
+Operations
+
 * Copy
 * Move
 * Rename
 * Delete
-* Secure delete
+* Secure Delete
+* Duplicate
+* Batch Operations
+* Drag and Drop
 * Undo
 * Redo
-* Batch operations
-* File synchronization
-* Folder synchronization
-* Show hidden files option
-* Hidden file filtering controls
+* History Browser
 
-================================================== FOLDER ORGANIZATION
+Organization
 
-* Create new folder from selected files
-* Create new folder from selected folders
-* Create new folder from mixed selections
-* Prompt user for folder name
-* Batch rename wizard
-* Naming templates
-* Regex renaming
-* Auto numbering
-* Search-and-replace renaming
-* Smart file organization rules
+* Create Folder From Selection
+* Move Selection To New Folder
+* Naming Wizard
+* Batch Rename
+* Regex Rename
+* Auto Numbering
+* Naming Templates
+* Smart Organization Rules
 
-================================================== SEARCH
+==================================================
+SEARCH SYSTEM
 
-* Instant search
-* Indexed search
-* Content search
-* Regex search
-* Metadata search
-* Duplicate finder
-* Similar file finder
-* Saved searches
-* Advanced filters
+* Instant Search
+* Indexed Search
+* Regex Search
+* Metadata Search
+* Content Search
+* Duplicate Finder
+* Similar File Finder
+* Saved Searches
+* Advanced Filters
 
-================================================== ARCHIVE MANAGEMENT
+==================================================
+ARCHIVE MANAGEMENT
 
-* ZIP extraction
-* ZIP creation
-* ZIP preview
-* 7z extraction
-* 7z creation
-* TAR support
-* GZIP support
-* BZIP2 support
-* XZ support
-* RAR support
-* Archive browsing as folders
-* Search inside archives
-* Archive integrity verification
-* Encrypted archive support
+Formats
 
-================================================== VIEWERS AND EDITORS
+* ZIP
+* 7Z
+* TAR
+* GZIP
+* BZIP2
+* XZ
+* RAR
 
-* Text viewer
-* Text editor
-* Markdown editor
-* JSON editor
-* YAML editor
-* XML editor
-* TOML editor
-* Log viewer
-* Image viewer
-* Video viewer
-* Audio player
-* PDF viewer
-* Database viewer
+Capabilities
 
-HEX FEATURES
+* Create Archives
+* Extract Archives
+* Browse Archives As Folders
+* Search Archives
+* Encrypted Archives
+* Archive Integrity Verification
 
-* Hex viewer
-* Hex editor
-* Offset navigation
-* Binary search
-* Binary replace
-* Structure templates
-* Hex compare
+==================================================
+EDITORS AND VIEWERS
 
-BINARY FEATURES
+Text
 
-* Binary viewer
-* Binary editor
-* Bit-level editing
-* Byte-level editing
-* Executable inspection
-* Firmware inspection
-* Raw disk inspection
+* Text Viewer
+* Text Editor
+* Markdown Editor
+* JSON Editor
+* YAML Editor
+* XML Editor
+* TOML Editor
+* Log Viewer
 
-================================================== TERMINAL SYSTEM
+Media
 
-Embedded terminal panel
+* Image Viewer
+* Video Viewer
+* Audio Player
+* PDF Viewer
 
-Supported shell types:
+Hex
+
+* Hex Viewer
+* Hex Editor
+* Offset Navigation
+* Binary Search
+* Binary Replace
+* Structure Templates
+* Hex Compare
+
+Binary
+
+* Binary Viewer
+* Binary Editor
+* Bit-Level Editing
+* Byte-Level Editing
+* Executable Inspection
+* Firmware Inspection
+* Raw Disk Inspection
+
+==================================================
+TERMINAL SYSTEM
+
+Supported Shells
 
 * Bash
 * Zsh
 * Fish
 * Nushell
 * Xonsh
-* Additional plugin shells
+* Plugin Shells
 
-Terminal modes:
+Terminal Features
 
-* CLI
-* TUI
-* GUI launcher integration
+* Embedded Terminal
+* Multiple Terminal Tabs
+* Split Terminal Views
+* Session Persistence
+* Terminal Profiles
+* Command History
+* Terminal Dropdown Selector
 
-Terminal synchronization modes:
+Supported Terminals
+
+* Built-In Terminal
+* Kitty
+* WezTerm
+* Konsole
+* Alacritty
+* GNOME Terminal
+* XFCE Terminal
+* User Defined Terminals
+
+Terminal Synchronization Modes
 
 * Linked
 * Independent
@@ -236,96 +249,66 @@ Terminal synchronization modes:
 * Two-Way Sync
 * Project Root Lock
 
-Terminal selection dropdown:
+==================================================
+EXPLORER SHELL ENVIRONMENT
 
-* Built-in terminal
-* External terminal integrations
-* User-defined terminals
+Explorer-specific shell configuration shall not modify
+global shell configurations.
 
-Multiple terminal tabs
+Supported Files
 
-Per-terminal profiles
+* explorer_bashrc
+* explorer_zshrc
+* explorer_fishrc
+* explorer_nushell
+* explorer_aliases
+* explorer_functions
+* explorer_environment
 
-================================================== USER INTERFACE AND THEMING
+Capabilities
 
-Theme customization
+* Explorer-only aliases
+* Explorer-only functions
+* Explorer-only variables
+* Explorer-only startup scripts
 
-Theme modes:
-
-* Light
-* Dark
-* System default
-* High contrast
-
-Customization options:
-
-* Color schemes
-* Accent colors
-* Icon themes
-* Font selection
-* Font sizing
-* Layout presets
-* Custom themes
-* Theme import/export
-
-================================================== EXPLORER-SPECIFIC SHELL SYSTEM
-
-Explorer-specific shell configuration
-
-Separate from:
-
-* ~/.bashrc
-* ~/.zshrc
-* ~/.config/fish
-
-Explorer shell files:
-
-* explorer bashrc
-* explorer zshrc
-* explorer fish config
-* explorer nushell config
-
-Explorer-only aliases
-Explorer-only functions
-Explorer-only environment variables
-
-Project-specific shell files:
+Project Shell Files
 
 * .explorerrc
 
-Workspace startup scripts
+Workspace Startup Scripts
 
-================================================== APPLICATION EXECUTION MODEL
+* Workspace Initialization
+* Environment Variables
+* Automatic Session Restoration
 
-Applications may expose:
+==================================================
+PROGRAM EXECUTION MODEL
 
-* CLI interface
-* TUI interface
-* GUI interface
-* Web interface
-* API interface
+Supported Interfaces
 
-Launch modes:
+* CLI
+* TUI
+* GUI
+* Headless
+* Service
+* API
+
+Launch Methods
 
 * Run GUI
 * Run TUI
 * Run CLI
 * Run Headless
-* Run as Service
-* Run in Sandbox
+* Run As Service
+* Run In Sandbox
 
-================================================== PROGRAM MANAGEMENT
+Applications may expose one or more interfaces.
 
-Programs folder
+==================================================
+PROJECT MANAGEMENT
 
-Supports:
-
-* Compiled binaries
-* Source projects
-* Scripts
-* Plugins
-
-Project detection:
+Supported Languages
 
 * Rust
 * C
@@ -336,35 +319,55 @@ Project detection:
 * Java
 * JavaScript
 * TypeScript
-* Additional plugin languages
+* Additional Plugin Languages
 
-Build system detection:
+Project Detection
 
-* Cargo
-* Make
-* CMake
-* Nix
-* npm
-* pnpm
-* Go build
-* Additional plugin build systems
+* Cargo.toml
+* Makefile
+* CMakeLists.txt
+* flake.nix
+* package.json
+* go.mod
+* Additional Plugin Definitions
 
-================================================== PLUGIN ARCHITECTURE
+Capabilities
 
-Plugin categories:
+* Project Discovery
+* Dependency Visualization
+* Build Management
+* Run Management
+* Workspace Management
 
-* Terminal plugins
-* Editor plugins
-* Archive plugins
-* Security plugins
-* Cloud plugins
-* Virtualization plugins
-* Language plugins
-* Build plugins
-* Device plugins
-* AI plugins
+==================================================
+GIT INTEGRATION
 
-Supported plugin formats:
+* Repository Discovery
+* Branch Management
+* Commit History
+* Diff Viewer
+* Merge Tools
+* Staging Area
+* Status Dashboard
+
+==================================================
+PLUGIN SYSTEM
+
+Plugin Categories
+
+* Terminal
+* Editor
+* Archive
+* Security
+* Cloud
+* Language
+* Build System
+* Device
+* AI
+* Filesystem
+* User Interface
+
+Plugin Formats
 
 * .so
 * .dll
@@ -374,109 +377,111 @@ Supported plugin formats:
 * .js
 * .wasm
 
-Plugin manager
-Plugin marketplace
-Plugin updates
-Plugin sandboxing
+Plugin Features
 
-================================================== PROJECT MANAGEMENT
+* Discovery
+* Installation
+* Updates
+* Removal
+* Sandboxing
+* Permissions
 
-Project explorer
+==================================================
+WORKSPACES
 
-Project metadata panel
+Workspace Features
 
-Dependency viewers
+* Save Layouts
+* Save Tabs
+* Save Open Projects
+* Save Terminal Sessions
+* Save Window State
+* Save Active Plugins
 
-Git integration:
+Workspace Profiles
 
-* Commit history
-* Branch management
-* Diff viewer
-* Merge tools
+* Development
+* Security
+* Forensics
+* General
+* User Defined
 
-Workspace system
+==================================================
+SECURITY MODEL
 
-Workspace restoration
-
-Build matrix support
-
-================================================== SECURITY FEATURES
-
-Permission inspector
-
-View:
+Permission Inspection
 
 * Ownership
 * Permissions
 * ACLs
-* SELinux contexts
-* AppArmor profiles
+* SELinux Contexts
+* AppArmor Profiles
 
-Hashing:
+Hashing
 
 * MD5
-* SHA-1
-* SHA-256
-* SHA-512
+* SHA1
+* SHA256
+* SHA512
 
-GPG support
+Cryptography
 
-Digital signature verification
+* GPG Encryption
+* GPG Signing
+* Signature Verification
 
-Secure delete
+Execution
 
-Forensic mode
+* Sandbox Mode
+* Disposable Environments
+* Read Only Root Mode
 
-Read-only root mode
-
-Trust levels:
+Trust Levels
 
 * Trusted
-* Semi-Trusted
+* Semi Trusted
 * Untrusted
 * Disposable
 
-Sandbox execution
+==================================================
+PRIVILEGE MODEL
 
-Disposable environments
-
-================================================== PRIVILEGE MANAGEMENT
-
-Privilege levels:
+Privilege Levels
 
 * Guest
 * User
 * Power User
 * Administrator
 * Root
-* Read-Only Root
+* Read Only Root
 * Container Root
 * Remote Root
 
-Privilege escalation ALWAYS requires authorization.
+Authorization Requirement
 
-Supported authorization methods:
+ALL privilege escalation shall require explicit user
+authorization.
+
+No silent elevation.
+
+No automatic elevation.
+
+No plugin may bypass authorization.
+
+Supported Authorization Methods
 
 * Password
-* Security key (FIDO2/YubiKey)
+* FIDO2
+* YubiKey
+* Smart Card
 * Biometrics
-* Smart card
-* Authentication application
-* Policy-based authorization
+* Authentication Applications
+* Policy Based Authorization
 
-No silent privilege escalation.
+==================================================
+NETWORKING
 
-No automatic root elevation.
-
-No plugin bypass of authorization system.
-
-Every elevation request must:
-
-* Display requested privilege level
-* Display requesting action
-* Require user approval
-
-================================================== NETWORK AND REMOTE ACCESS
+Protocols
 
 * SMB
 * NFS
@@ -485,69 +490,117 @@ Every elevation request must:
 * SFTP
 * SCP
 * WebDAV
-* SSH integration
-* Remote file systems
+* SSH
 
-================================================== STORAGE FEATURES
+Capabilities
 
-* Disk usage analyzer
-* Folder size calculations
-* Snapshot browsing
-* Version history
-* ISO mounting
-* Disk image browsing
-* VM image browsing
-* Container filesystem browsing
+* Remote Navigation
+* Remote Editing
+* Remote Terminal Sessions
+* Remote Project Management
 
-================================================== DEVICE EXPLORER
+==================================================
+STORAGE MANAGEMENT
 
-Device tree
+* Disk Usage Analysis
+* Folder Size Analysis
+* Snapshot Browsing
+* Version History
+* ISO Mounting
+* Disk Image Browsing
+* VM Disk Browsing
+* Container Filesystem Browsing
 
-Browse:
+==================================================
+DEVICE EXPLORER
+
+Supported Devices
 
 * USB
 * PCIe
-* Network
-* Bluetooth
+* Network Devices
+* Bluetooth Devices
 * Cameras
+* Serial Devices
+* GPS Devices
+* LiDAR Devices
+* Radar Devices
 * Sensors
-* Serial devices
-* GPS devices
-* LiDAR devices
-* Radar devices
 
-================================================== SYSTEM OPERATIONS CENTER
+==================================================
+SYSTEM OPERATIONS CENTER
 
-Unified dashboard
+Unified Dashboard
 
-Monitor:
+Monitor
 
 * CPU
 * RAM
 * Storage
 * Network
-* Containers
-* Virtual machines
+* Processes
 * Services
+* Containers
+* Virtual Machines
 * Sensors
 * Projects
-* Terminal sessions
+* Terminal Sessions
 
-================================================== UNIVERSAL OBJECT MODEL
+==================================================
+COMMAND PALETTE
 
-Everything is browsable through the explorer:
+Every CoreNav action shall be discoverable through a
+unified command palette.
+
+Supported Commands
+
+* File Operations
+* Terminal Operations
+* Project Operations
+* Security Operations
+* Plugin Operations
+* Workspace Operations
+* Administrative Operations
+
+==================================================
+KEYBOARD ACCESSIBILITY
+
+Every interactive action shall be available through:
+
+* Keyboard Shortcuts
+* Command Palette
+* CLI Commands
+
+Shortcuts shall be:
+
+* Configurable
+* Exportable
+* Importable
+* Workspace Aware
+
+==================================================
+UNIVERSAL OBJECT MODEL
+
+Everything shall be accessible through the same
+navigation paradigm.
+
+Objects
 
 Files/
 Projects/
 Archives/
-Network/
-Cloud/
-Git/
-Containers/
-VMs/
+Devices/
 Processes/
 Services/
-Devices/
+Containers/
+VirtualMachines/
+Network/
+Cloud/
+Repositories/
 Sensors/
 
-The explorer serves as the central management interface for the entire operating system.
+CoreNav shall function as a unified navigation layer
+for the entire operating system.
+
+==================================================
+END SPECIFICATION
