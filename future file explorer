@@ -15,8 +15,7 @@ A modular file explorer that combines:
 
 The application acts as the central interface for the operating system while remaining extensible through plugins.
 
-==================================================
-CORE FILE MANAGEMENT
+================================================== CORE FILE MANAGEMENT
 
 * Single-pane browsing
 * Dual-pane browsing
@@ -40,9 +39,10 @@ CORE FILE MANAGEMENT
 * Batch operations
 * File synchronization
 * Folder synchronization
+* Show hidden files option
+* Hidden file filtering controls
 
-==================================================
-FOLDER ORGANIZATION
+================================================== FOLDER ORGANIZATION
 
 * Create new folder from selected files
 * Create new folder from selected folders
@@ -55,8 +55,7 @@ FOLDER ORGANIZATION
 * Search-and-replace renaming
 * Smart file organization rules
 
-==================================================
-SEARCH
+================================================== SEARCH
 
 * Instant search
 * Indexed search
@@ -68,8 +67,7 @@ SEARCH
 * Saved searches
 * Advanced filters
 
-==================================================
-ARCHIVE MANAGEMENT
+================================================== ARCHIVE MANAGEMENT
 
 * ZIP extraction
 * ZIP creation
@@ -86,8 +84,7 @@ ARCHIVE MANAGEMENT
 * Archive integrity verification
 * Encrypted archive support
 
-==================================================
-VIEWERS AND EDITORS
+================================================== VIEWERS AND EDITORS
 
 * Text viewer
 * Text editor
@@ -123,8 +120,7 @@ BINARY FEATURES
 * Firmware inspection
 * Raw disk inspection
 
-==================================================
-TERMINAL SYSTEM
+================================================== TERMINAL SYSTEM
 
 Embedded terminal panel
 
@@ -161,8 +157,29 @@ Multiple terminal tabs
 
 Per-terminal profiles
 
-==================================================
-EXPLORER-SPECIFIC SHELL SYSTEM
+================================================== USER INTERFACE AND THEMING
+
+Theme customization
+
+Theme modes:
+
+* Light
+* Dark
+* System default
+* High contrast
+
+Customization options:
+
+* Color schemes
+* Accent colors
+* Icon themes
+* Font selection
+* Font sizing
+* Layout presets
+* Custom themes
+* Theme import/export
+
+================================================== EXPLORER-SPECIFIC SHELL SYSTEM
 
 Explorer-specific shell configuration
 
@@ -189,8 +206,7 @@ Project-specific shell files:
 
 Workspace startup scripts
 
-==================================================
-APPLICATION EXECUTION MODEL
+================================================== APPLICATION EXECUTION MODEL
 
 Applications may expose:
 
@@ -209,8 +225,7 @@ Launch modes:
 * Run as Service
 * Run in Sandbox
 
-==================================================
-PROGRAM MANAGEMENT
+================================================== PROGRAM MANAGEMENT
 
 Programs folder
 
@@ -245,8 +260,7 @@ Build system detection:
 * Go build
 * Additional plugin build systems
 
-==================================================
-PLUGIN ARCHITECTURE
+================================================== PLUGIN ARCHITECTURE
 
 Plugin categories:
 
@@ -276,8 +290,7 @@ Plugin marketplace
 Plugin updates
 Plugin sandboxing
 
-==================================================
-PROJECT MANAGEMENT
+================================================== PROJECT MANAGEMENT
 
 Project explorer
 
@@ -298,8 +311,7 @@ Workspace restoration
 
 Build matrix support
 
-==================================================
-SECURITY FEATURES
+================================================== SECURITY FEATURES
 
 Permission inspector
 
@@ -339,8 +351,7 @@ Sandbox execution
 
 Disposable environments
 
-==================================================
-PRIVILEGE MANAGEMENT
+================================================== PRIVILEGE MANAGEMENT
 
 Privilege levels:
 
@@ -376,8 +387,7 @@ Every elevation request must:
 * Display requesting action
 * Require user approval
 
-==================================================
-NETWORK AND REMOTE ACCESS
+================================================== NETWORK AND REMOTE ACCESS
 
 * SMB
 * NFS
@@ -389,8 +399,7 @@ NETWORK AND REMOTE ACCESS
 * SSH integration
 * Remote file systems
 
-==================================================
-STORAGE FEATURES
+================================================== STORAGE FEATURES
 
 * Disk usage analyzer
 * Folder size calculations
@@ -401,8 +410,7 @@ STORAGE FEATURES
 * VM image browsing
 * Container filesystem browsing
 
-==================================================
-DEVICE EXPLORER
+================================================== DEVICE EXPLORER
 
 Device tree
 
@@ -419,8 +427,7 @@ Browse:
 * LiDAR devices
 * Radar devices
 
-==================================================
-SYSTEM OPERATIONS CENTER
+================================================== SYSTEM OPERATIONS CENTER
 
 Unified dashboard
 
@@ -437,8 +444,7 @@ Monitor:
 * Projects
 * Terminal sessions
 
-==================================================
-UNIVERSAL OBJECT MODEL
+================================================== UNIVERSAL OBJECT MODEL
 
 Everything is browsable through the explorer:
 
