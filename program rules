@@ -3,10 +3,12 @@ gui
 tui 
 cli
 
-PS:
+OS:
 linux (snap, flat pack, .appimage, .deb, .rpm)
 windows 
-bsd 
+bsd
+Plan 9
+Mimix
 macOS
 IOS
 android 
