@@ -7,7 +7,12 @@ make 3 new distros that are on thr same level as fedora, arch and debian that ca
    and that is is based directly off of the kernel
 
 
-
+change/add::
+secure isa:
+request code
+ecc code
+promice code
+prediction tree on/off code
 
 
 
