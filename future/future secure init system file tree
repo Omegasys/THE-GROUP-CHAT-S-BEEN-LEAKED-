@@ -1,0 +1,259 @@
+================================================================================
+SIS (Secure Init System)
+GitHub Repository File Tree (GPLv3)
+================================================================================
+
+SIS/
+├── LICENSE
+├── README.md
+├── SECURITY.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── CHANGELOG.md
+├── GOVERNANCE.md
+├── ROADMAP.md
+│
+├── docs/
+│   ├── architecture/
+│   │   ├── overview.md
+│   │   ├── core_pid1.md
+│   │   ├── module_system.md
+│   │   ├── event_bus.md
+│   │   ├── dependency_graph.md
+│   │   ├── boot_process.md
+│   │   ├── security_model.md
+│   │   └── threat_model.md
+│   │
+│   ├── policy/
+│   │   ├── sis_policy_spec.md
+│   │   ├── policy_examples.md
+│   │   ├── usb_policy.md
+│   │   ├── network_policy.md
+│   │   ├── service_policy.md
+│   │   └── tor_policy.md
+│   │
+│   ├── modules/
+│   │   ├── module_api.md
+│   │   ├── writing_modules.md
+│   │   ├── signing_modules.md
+│   │   └── module_security.md
+│   │
+│   ├── security/
+│   │   ├── sandboxing.md
+│   │   ├── capabilities.md
+│   │   ├── usb_security.md
+│   │   ├── network_security.md
+│   │   ├── tpm_integration.md
+│   │   ├── secure_boot.md
+│   │   └── audit_system.md
+│   │
+│   └── user/
+│       ├── installation.md
+│       ├── configuration.md
+│       ├── profiles.md
+│       ├── troubleshooting.md
+│       └── recovery_mode.md
+│
+├── core/
+│   ├── pid1/
+│   │   ├── main.rs
+│   │   ├── init.rs
+│   │   ├── boot.rs
+│   │   ├── shutdown.rs
+│   │   ├── recovery.rs
+│   │   └── panic.rs
+│   │
+│   ├── service_manager/
+│   │   ├── service.rs
+│   │   ├── manager.rs
+│   │   ├── lifecycle.rs
+│   │   ├── supervision.rs
+│   │   └── restart_policy.rs
+│   │
+│   ├── dependency_engine/
+│   │   ├── graph.rs
+│   │   ├── resolver.rs
+│   │   ├── cycle_detection.rs
+│   │   └── scheduler.rs
+│   │
+│   ├── event_bus/
+│   │   ├── event.rs
+│   │   ├── bus.rs
+│   │   ├── dispatcher.rs
+│   │   └── handlers.rs
+│   │
+│   ├── module_loader/
+│   │   ├── loader.rs
+│   │   ├── registry.rs
+│   │   ├── verification.rs
+│   │   └── signing.rs
+│   │
+│   ├── config/
+│   │   ├── parser.rs
+│   │   ├── validator.rs
+│   │   ├── reload.rs
+│   │   └── schema.rs
+│   │
+│   └── security_engine/
+│       ├── enforcement.rs
+│       ├── capabilities.rs
+│       ├── isolation.rs
+│       ├── trust_model.rs
+│       └── policy_bridge.rs
+│
+├── policy_engine/
+│   ├── parser/
+│   │   ├── lexer.rs
+│   │   ├── parser.rs
+│   │   └── ast.rs
+│   │
+│   ├── evaluator/
+│   │   ├── engine.rs
+│   │   ├── rules.rs
+│   │   ├── conditions.rs
+│   │   └── decision.rs
+│   │
+│   ├── enforcement/
+│   │   ├── allow.rs
+│   │   ├── deny.rs
+│   │   ├── require.rs
+│   │   ├── quarantine.rs
+│   │   └── audit.rs
+│   │
+│   ├── policy_modules/
+│   │   ├── usb_policy.rs
+│   │   ├── network_policy.rs
+│   │   ├── service_policy.rs
+│   │   ├── tor_policy.rs
+│   │   └── tpm_policy.rs
+│   │
+│   └── examples/
+│       ├── default_policy.sis
+│       ├── high_security.sis
+│       ├── anonymous.sis
+│       ├── airgap.sis
+│       └── server.sis
+│
+├── modules/
+│   ├── networking/
+│   │   ├── dhcp.rs
+│   │   ├── dns.rs
+│   │   ├── firewall.rs
+│   │   ├── routes.rs
+│   │   └── interfaces.rs
+│   │
+│   ├── tor/
+│   │   ├── tor_manager.rs
+│   │   ├── circuits.rs
+│   │   ├── onion_services.rs
+│   │   ├── bridges.rs
+│   │   └── proxy.rs
+│   │
+│   ├── usb/
+│   │   ├── usb_monitor.rs
+│   │   ├── device_classifier.rs
+│   │   ├── hid_protection.rs
+│   │   ├── storage_policy.rs
+│   │   └── quarantine.rs
+│   │
+│   ├── logging/
+│   │   ├── journal.rs
+│   │   ├── audit.rs
+│   │   ├── forwarder.rs
+│   │   └── integrity_chain.rs
+│   │
+│   ├── containers/
+│   │   ├── oci.rs
+│   │   ├── namespaces.rs
+│   │   ├── sandbox.rs
+│   │   └── cgroups.rs
+│   │
+│   ├── tpm/
+│   │   ├── attestation.rs
+│   │   ├── sealing.rs
+│   │   ├── keys.rs
+│   │   └── rng.rs
+│   │
+│   ├── virtualization/
+│   │   ├── kvm.rs
+│   │   ├── xen.rs
+│   │   ├── vm_manager.rs
+│   │   └── passthrough.rs
+│   │
+│   └── ai_optional/
+│       ├── anomaly_detection.rs
+│       ├── boot_analysis.rs
+│       └── security_scoring.rs
+│
+├── profiles/
+│   ├── minimal.sis
+│   ├── desktop.sis
+│   ├── server.sis
+│   ├── anonymous.sis
+│   ├── airgap.sis
+│   ├── forensics.sis
+│   └── high_security.sis
+│
+├── tools/
+│   ├── sisctl/
+│   │   ├── main.rs
+│   │   ├── commands.rs
+│   │   ├── service_cli.rs
+│   │   └── policy_cli.rs
+│   │
+│   ├── sis-analyze/
+│   │   ├── dependency_graph.rs
+│   │   ├── boot_trace.rs
+│   │   └── profiler.rs
+│   │
+│   ├── sis-policy-compile/
+│   │   ├── compiler.rs
+│   │   ├── validator.rs
+│   │   └── optimizer.rs
+│   │
+│   └── sis-debug/
+│       ├── inspector.rs
+│       ├── event_trace.rs
+│       └── log_viewer.rs
+│
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   ├── boot_tests/
+│   ├── security_tests/
+│   ├── policy_tests/
+│   ├── usb_tests/
+│   ├── network_tests/
+│   └── fuzz/
+│
+├── examples/
+│   ├── hello_service/
+│   ├── tor_only_system/
+│   ├── usb_locked_down/
+│   ├── secure_server/
+│   └── embedded_minimal/
+│
+├── scripts/
+│   ├── build.sh
+│   ├── install.sh
+│   ├── run_qemu.sh
+│   ├── test_all.sh
+│   ├── sign_modules.sh
+│   └── generate_keys.sh
+│
+├── build/
+│   ├── Makefile
+│   ├── Cargo.toml
+│   ├── config.mk
+│   └── linker.ld
+│
+└── runtime/
+    ├── initramfs/
+    ├── bootloader/
+    ├── recovery_shell/
+    ├── emergency_mode/
+    └── system_state/
+
+================================================================================
+END OF FILE TREE
+================================================================================
