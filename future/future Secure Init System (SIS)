@@ -1,0 +1,439 @@
+================================================================================
+SIS (Secure Init System)
+Unified Specification + Policy Language (SIS-Policy)
+Version: 0.2 Concept Draft
+================================================================================
+
+CORE DESIGN PHILOSOPHY
+--------------------------------------------------------------------------------
+
+• Minimal trusted core (PID 1 only essentials)
+• Everything else is modular and optional
+• Security is enforced through a unified policy language
+• No hidden behavior
+• Deterministic boot
+• Fully auditable system state
+• Capability-based service control
+• Event-driven architecture
+• Policy-first security model
+
+================================================================================
+CORE PID 1 RESPONSIBILITIES
+--------------------------------------------------------------------------------
+
+SIS Core Only:
+
+• Process 1 (PID 1)
+• Boot orchestration
+• Dependency resolution engine
+• Service supervision
+• Module loader
+• Event dispatcher
+• Policy enforcement engine (SIS-Policy runtime)
+• Secure shutdown / reboot / recovery
+
+Nothing else is required in core.
+
+================================================================================
+MODULE SYSTEM
+--------------------------------------------------------------------------------
+
+All features are modules:
+
+• Networking
+• Tor
+• USB control
+• Logging
+• Containers
+• Virtualization
+• TPM / HSM
+• Firewall integration
+• AI anomaly detection
+• Remote management
+• Storage encryption hooks
+• Update system
+• UI/login managers
+
+Module properties:
+
+• Signed (optional mandatory in high security mode)
+• Versioned
+• Hot-loadable (optional)
+• Policy-gated
+• Replaceable implementations
+• Can be fully excluded at build time
+
+================================================================================
+SERVICE MODEL
+--------------------------------------------------------------------------------
+
+Services are declarative units:
+
+Service fields:
+
+• command
+• dependencies
+• resource limits
+• security profile
+• activation triggers
+• required modules
+• policy bindings
+
+Activation types:
+
+• manual
+• boot
+• socket
+• timer
+• device
+• USB
+• network
+• Tor
+• TPM event
+• filesystem event
+• policy event
+
+================================================================================
+DEPENDENCY ENGINE
+--------------------------------------------------------------------------------
+
+Supports:
+
+• Service dependencies
+• Hardware dependencies
+• USB dependencies
+• Network dependencies
+• Tor dependencies
+• TPM attestation dependencies
+• Policy dependencies
+• Time-based dependencies
+• Event-based dependencies
+
+================================================================================
+EVENT SYSTEM
+--------------------------------------------------------------------------------
+
+System-wide event bus:
+
+Events:
+
+• usb.attach
+• usb.detach
+• net.up
+• net.down
+• tor.ready
+• tpm.attested
+• service.start
+• service.fail
+• service.exit
+• module.load
+• policy.violation
+• boot.stage.completed
+
+Events can:
+
+• Trigger services
+• Block services
+• Modify state
+• Trigger policy evaluation
+
+================================================================================
+SECURITY MODEL
+--------------------------------------------------------------------------------
+
+Built on three layers:
+
+1. Kernel enforcement (outside SIS)
+2. SIS module sandboxing
+3. SIS-Policy enforcement (primary logic layer)
+
+Capabilities:
+
+• Per-service permissions
+• Per-module permissions
+• Per-device permissions
+• Per-network permissions
+• Per-user/session permissions
+
+================================================================================
+SIS-POLICY LANGUAGE
+================================================================================
+
+GENERAL DESIGN
+--------------------------------------------------------------------------------
+
+SIS-Policy is:
+
+• Declarative (like SELinux)
+• Readable (simpler than SELinux)
+• Modular (policy modules can extend rules)
+• Deterministic
+• Event-driven
+• Capability-based
+
+Core idea:
+
+    allow / deny / require / audit / quarantine
+
+No complex macro language required.
+
+================================================================================
+POLICY STRUCTURE
+================================================================================
+
+policy "system-default" {
+
+    version: 1
+
+    profile: "high-security"
+
+    default {
+        service: deny
+        device: deny
+        network: deny
+    }
+
+    rules {
+
+        allow service if service.signed == true
+        allow service if service.capability <= allowed_capabilities
+
+        allow network if service.requires_network == true
+        deny network if usb.malicious == true
+
+        require usb.storage -> signed_device == true
+        require network.tor if service.tag == "anonymous"
+
+        audit service.start
+        audit policy.violation
+
+        quarantine service if service.crash_count > 3
+
+    }
+}
+================================================================================
+
+POLICY KEYWORDS
+--------------------------------------------------------------------------------
+
+Actions:
+
+• allow
+• deny
+• require
+• audit
+• quarantine
+• isolate
+• escalate
+
+Objects:
+
+• service
+• module
+• device
+• usb
+• network
+• process
+• user
+• event
+
+Conditions:
+
+• == != < > <= >=
+• has
+• in
+• exists
+• matches
+• signed
+• trusted
+• attested
+
+================================================================================
+USB POLICY EXTENSION
+--------------------------------------------------------------------------------
+
+usb {
+
+    default: deny
+
+    allow storage if device.signed == true
+    allow hid if device.class == "keyboard" and user.approved == true
+
+    require storage.mount if device.encrypted == true
+
+    quarantine device if device.anomaly_detected == true
+
+    audit usb.attach
+    audit usb.detach
+}
+================================================================================
+
+NETWORK POLICY EXTENSION
+--------------------------------------------------------------------------------
+
+network {
+
+    default: deny
+
+    allow outbound if service.network == true
+
+    require tor if service.tag == "anonymous"
+
+    deny clearnet if profile == "anonymous"
+
+    quarantine connection if dns.leak_detected == true
+
+    audit network.connect
+}
+================================================================================
+
+SERVICE POLICY EXTENSION
+--------------------------------------------------------------------------------
+
+service {
+
+    default: deny
+
+    allow start if service.signed == true
+
+    allow start if service.policy_compliant == true
+
+    require start if service.dependencies_met == true
+
+    quarantine service if service.behavior_anomaly == true
+
+    audit service.start
+    audit service.stop
+}
+================================================================================
+
+TOR MODULE INTEGRATION
+--------------------------------------------------------------------------------
+
+• Optional module
+• Policy-controlled activation
+• Can be required per-service
+• Supports onion-only mode
+• Supports transparent proxy mode
+• Must satisfy:
+
+    require network if service.requires_tor == true
+
+================================================================================
+USB CONTROL SYSTEM
+--------------------------------------------------------------------------------
+
+• Device approval pipeline
+• Class-based filtering
+• Port-based rules
+• Per-device identity tracking
+• HID injection protection
+• Storage read-only default option
+• Automatic quarantine of unknown devices
+
+================================================================================
+TRUST MODEL
+--------------------------------------------------------------------------------
+
+Trust levels:
+
+• untrusted
+• restricted
+• trusted
+• verified
+• attested (TPM-backed)
+
+Policies can require minimum trust level per action.
+
+================================================================================
+SECURITY PROFILES
+--------------------------------------------------------------------------------
+
+Minimal:
+• Core only
+• No enforcement modules except critical
+
+Desktop:
+• Standard services
+• Moderate sandboxing
+
+Server:
+• Signed services required
+• Logging enabled
+• Firewall enforced
+
+Anonymous:
+• Tor required
+• DNS leak protection
+• No clearnet allowed
+
+High Security:
+• TPM attestation required
+• All modules signed
+• Strict policy enforcement
+• Immutable configuration
+
+Air Gap:
+• Network disabled
+• USB strictly controlled
+• Offline-only operations
+
+================================================================================
+AUDIT SYSTEM
+--------------------------------------------------------------------------------
+
+• Immutable logs
+• Policy decision logging
+• Event chain verification
+• Signed audit records
+• Remote audit replication (optional)
+
+Logs include:
+
+• allow/deny decisions
+• service start/stop events
+• device attach/detach events
+• policy violations
+• module loading/unloading
+
+================================================================================
+ANTI-FINGERPRINTING (OPTIONAL MODULE)
+--------------------------------------------------------------------------------
+
+• Randomized service timing (policy-controlled)
+• Identifier normalization
+• Network fingerprint reduction
+• Optional entropy of system timing (bounded)
+
+================================================================================
+DESIGN GOALS OF SIS-POLICY
+--------------------------------------------------------------------------------
+
+• Simpler than SELinux
+• More readable than AppArmor
+• More modular than either
+• Fully deterministic
+• Policy-driven security model
+• Central enforcement point
+• No hidden enforcement logic
+• Easily auditable rules
+• Extensible by modules
+
+================================================================================
+LONG-TERM VISION
+--------------------------------------------------------------------------------
+
+SIS becomes:
+
+• A minimal init core
+• A modular operating system control plane
+• A unified security enforcement layer
+• A policy-driven service orchestration system
+
+Instead of many disconnected systems (SELinux, systemd units, udev rules,
+firewalls, VPN logic), SIS-Policy becomes the single declarative layer that
+describes:
+
+    "What is allowed to exist and under what conditions"
+
+================================================================================
